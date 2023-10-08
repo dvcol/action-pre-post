@@ -1,0 +1,68 @@
+{
+  "name": "@dvcol/action-pre-post",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TypeScript action for running commands in post, main or pre",
+  "main": "src/main.ts",
+  "scripts": {
+    "prepare": "husky install",
+    "build": "pnpm run build:main && pnpm run build:post && pnpm run build:pre",
+    "build:main": "ncc build src/main.ts -o lib/main",
+    "build:post": "ncc build src/post.ts -o lib/post",
+    "build:pre": "ncc build src/pre.ts -o lib/pre",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/**/*.ts ",
+    "test": "jest --passWithNoTests",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dvcol/action-pre-post.git"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "lint-staged": {
+    "*.{ts}": [
+      "eslint --fix"
+    ]
+  },
+  "packageManager": "pnpm@8.3.1",
+  "author": "dvcol",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/exec": "^1.1.1",
+    "@actions/github": "^5.1.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.5.0",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@octokit/types": "^9.1.2",
+    "@types/jest": "^29.5.1",
+    "@types/node": "^18.15.13",
+    "@types/request": "^2.48.8",
+    "@types/uuid": "^9.0.1",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vercel/ncc": "^0.36.1",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-github": "^4.7.0",
+    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "js-yaml": "^4.1.0",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.7",
+    "standard-version": "^9.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.4"
+  }
+}

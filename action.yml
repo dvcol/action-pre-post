@@ -1,0 +1,44 @@
+name: Action Pre Post
+
+description: 'Generic JS Action to execute a command in a post or pre step context.'
+
+inputs:
+  shell:
+    description: 'The shell to use, bash, sh, etc.'
+    default: 'bash'
+  main:
+    description: 'Main command/script.'
+    required: false
+  post:
+    description: 'Post command/script.'
+    required: false
+  pre:
+    description: 'Pre command/script.'
+    required: false
+
+  post-cwd:
+    description: "The working directory from which the post command needs to be run."
+    required: false
+  pre-cwd:
+    description: "The working directory from which the pre command needs to be run."
+    required: false
+  main-cwd:
+    description: "The working directory from which the main command needs to be run."
+    required: false
+
+  post-args:
+    description: "Comma separated arguments to pass to the post command to be run."
+    required: false
+  pre-args:
+    description: "Comma separated arguments to pass to the pre command to be run."
+    required: false
+  main-args:
+    description: "Comma separated arguments to pass to the main command to be run."
+    required: false
+
+
+runs:
+  using: 'node16'
+  pre: 'lib/pre/index.js'
+  main: 'lib/main/index.js'
+  post: 'lib/post/index.js'
